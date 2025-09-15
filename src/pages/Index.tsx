@@ -1,15 +1,20 @@
-import { Shield, Lock, Eye, TrendingUp } from "lucide-react";
+import { Shield, Lock, Eye, TrendingUp, CreditCard, DollarSign } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { useAccount } from 'wagmi';
 import { WalletConnect } from "@/components/WalletConnect";
+import { CollateralManager } from "@/components/CollateralManager";
+import { LoanManager } from "@/components/LoanManager";
 import heroVault from "@/assets/hero-vault.jpg";
+import { useState } from "react";
 
 const Index = () => {
   const navigate = useNavigate();
   const { isConnected } = useAccount();
+  const [activeSection, setActiveSection] = useState<'hero' | 'collateral' | 'loan'>('hero');
+  const [createdVaultId, setCreatedVaultId] = useState<number | null>(null);
 
   return (
     <div className="min-h-screen bg-background">
@@ -62,13 +67,25 @@ const Index = () => {
             </div>
 
             {isConnected ? (
-              <Button 
-                size="lg" 
-                onClick={() => navigate('/dashboard')}
-                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg shadow-purple-500/25 px-8 py-6 text-lg"
-              >
-                Enter Vault
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button 
+                  size="lg" 
+                  onClick={() => setActiveSection('collateral')}
+                  className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg shadow-purple-500/25 px-8 py-6 text-lg"
+                >
+                  <Shield className="w-5 h-5 mr-2" />
+                  Use as Collateral
+                </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline"
+                  onClick={() => setActiveSection('loan')}
+                  className="border-purple-500/30 text-purple-300 hover:bg-purple-500/10 px-8 py-6 text-lg"
+                >
+                  <CreditCard className="w-5 h-5 mr-2" />
+                  Create Loan
+                </Button>
+              </div>
             ) : (
               <div className="max-w-md mx-auto">
                 <WalletConnect />
@@ -113,6 +130,79 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Contract Interaction Section */}
+      {isConnected && activeSection !== 'hero' && (
+        <section className="container mx-auto px-4 py-16">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center space-y-4 mb-12">
+              <h2 className="text-3xl font-bold text-foreground">
+                {activeSection === 'collateral' ? 'Use NFTs as Collateral' : 'Create Confidential Loan'}
+              </h2>
+              <p className="text-muted-foreground">
+                {activeSection === 'collateral' 
+                  ? 'Create a confidential vault with FHE-encrypted collateral values'
+                  : 'Request loans or make repayments with encrypted amounts'
+                }
+              </p>
+            </div>
+
+            {/* Navigation */}
+            <div className="flex justify-center mb-8">
+              <div className="flex space-x-1 bg-muted p-1 rounded-lg">
+                <Button
+                  variant={activeSection === 'collateral' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setActiveSection('collateral')}
+                  className="px-6"
+                >
+                  <Shield className="w-4 h-4 mr-2" />
+                  Use as Collateral
+                </Button>
+                <Button
+                  variant={activeSection === 'loan' ? 'default' : 'ghost'}
+                  size="sm"
+                  onClick={() => setActiveSection('loan')}
+                  className="px-6"
+                >
+                  <CreditCard className="w-4 h-4 mr-2" />
+                  Create Loan
+                </Button>
+              </div>
+            </div>
+
+            {/* Component Rendering */}
+            {activeSection === 'collateral' && (
+              <CollateralManager 
+                onVaultCreated={(vaultId) => {
+                  setCreatedVaultId(vaultId);
+                  setActiveSection('loan');
+                }}
+              />
+            )}
+
+            {activeSection === 'loan' && (
+              <LoanManager 
+                vaultId={createdVaultId || undefined}
+                onLoanCreated={(loanId) => {
+                  console.log('Loan created:', loanId);
+                }}
+              />
+            )}
+
+            {/* Back to Hero */}
+            <div className="text-center mt-8">
+              <Button
+                variant="outline"
+                onClick={() => setActiveSection('hero')}
+                className="border-purple-500/30 text-purple-300 hover:bg-purple-500/10"
+              >
+                Back to Overview
+              </Button>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Footer */}
       <footer className="border-t border-border mt-20">
