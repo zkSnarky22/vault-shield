@@ -25,12 +25,12 @@ const Index = () => {
           <div className="max-w-4xl mx-auto text-center space-y-8">
             {/* Header */}
             <div className="space-y-4">
-              <Badge className="bg-primary/20 text-primary border-primary/30 hover:bg-primary/30">
+              <Badge className="bg-gradient-to-r from-purple-500/20 to-blue-500/20 text-purple-300 border-purple-500/30 hover:from-purple-500/30 hover:to-blue-500/30">
                 <Lock className="w-3 h-3 mr-1" />
                 Confidential Collateralization
               </Badge>
               
-              <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-purple-400 via-blue-500 to-cyan-400 bg-clip-text text-transparent">
                 Leverage NFTs, Privately
               </h1>
               
@@ -42,20 +42,20 @@ const Index = () => {
 
             {/* Key Features */}
             <div className="grid md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-              <Card className="bg-card/50 backdrop-blur border-border p-6 hover:bg-vault-gradient transition-all duration-300">
-                <Shield className="w-8 h-8 text-primary mb-3 mx-auto" />
+              <Card className="bg-card/50 backdrop-blur border-border p-6 hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300">
+                <Shield className="w-8 h-8 text-purple-400 mb-3 mx-auto" />
                 <h3 className="font-semibold text-foreground mb-2">Encrypted Values</h3>
                 <p className="text-sm text-muted-foreground">Your collateral values remain private and encrypted</p>
               </Card>
               
-              <Card className="bg-card/50 backdrop-blur border-border p-6 hover:bg-vault-gradient transition-all duration-300">
-                <Eye className="w-8 h-8 text-primary mb-3 mx-auto" />
+              <Card className="bg-card/50 backdrop-blur border-border p-6 hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-cyan-500/10 transition-all duration-300">
+                <Eye className="w-8 h-8 text-blue-400 mb-3 mx-auto" />
                 <h3 className="font-semibold text-foreground mb-2">Zero Market Impact</h3>
                 <p className="text-sm text-muted-foreground">Prevent price manipulation with confidential lending</p>
               </Card>
               
-              <Card className="bg-card/50 backdrop-blur border-border p-6 hover:bg-vault-gradient transition-all duration-300">
-                <TrendingUp className="w-8 h-8 text-primary mb-3 mx-auto" />
+              <Card className="bg-card/50 backdrop-blur border-border p-6 hover:bg-gradient-to-br hover:from-cyan-500/10 hover:to-purple-500/10 transition-all duration-300">
+                <TrendingUp className="w-8 h-8 text-cyan-400 mb-3 mx-auto" />
                 <h3 className="font-semibold text-foreground mb-2">Competitive Rates</h3>
                 <p className="text-sm text-muted-foreground">Access the best lending rates in DeFi</p>
               </Card>
@@ -65,7 +65,7 @@ const Index = () => {
               <Button 
                 size="lg" 
                 onClick={() => navigate('/dashboard')}
-                className="bg-primary hover:bg-primary/90 shadow-crypto-glow px-8 py-6 text-lg"
+                className="bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg shadow-purple-500/25 px-8 py-6 text-lg"
               >
                 Enter Vault
               </Button>
@@ -87,25 +87,25 @@ const Index = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center hover:bg-vault-gradient transition-all duration-300">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-bold text-primary">1</span>
+            <Card className="p-6 text-center hover:bg-gradient-to-br hover:from-purple-500/10 hover:to-blue-500/10 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-lg font-bold text-purple-400">1</span>
               </div>
               <h3 className="font-semibold text-foreground mb-2">Import Your NFTs</h3>
               <p className="text-sm text-muted-foreground">Connect your wallet and import NFTs to your confidential vault</p>
             </Card>
 
-            <Card className="p-6 text-center hover:bg-vault-gradient transition-all duration-300">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-bold text-primary">2</span>
+            <Card className="p-6 text-center hover:bg-gradient-to-br hover:from-blue-500/10 hover:to-cyan-500/10 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-lg font-bold text-blue-400">2</span>
               </div>
               <h3 className="font-semibold text-foreground mb-2">Use as Collateral</h3>
               <p className="text-sm text-muted-foreground">Lock your NFTs as collateral with encrypted value protection</p>
             </Card>
 
-            <Card className="p-6 text-center hover:bg-vault-gradient transition-all duration-300">
-              <div className="w-12 h-12 bg-primary/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-lg font-bold text-primary">3</span>
+            <Card className="p-6 text-center hover:bg-gradient-to-br hover:from-cyan-500/10 hover:to-purple-500/10 transition-all duration-300">
+              <div className="w-12 h-12 bg-gradient-to-br from-cyan-500/20 to-purple-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-lg font-bold text-cyan-400">3</span>
               </div>
               <h3 className="font-semibold text-foreground mb-2">Create Confidential Loan</h3>
               <p className="text-sm text-muted-foreground">Borrow against your collateral with competitive rates</p>

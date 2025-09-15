@@ -14,8 +14,8 @@ export function WalletConnect() {
       <Card className="bg-card border-border p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-success/20 rounded-full flex items-center justify-center">
-              <Shield className="w-5 h-5 text-success" />
+            <div className="w-10 h-10 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center">
+              <Shield className="w-5 h-5 text-purple-400" />
             </div>
             <div>
               <p className="font-medium text-foreground">Wallet Connected</p>
@@ -45,8 +45,8 @@ export function WalletConnect() {
   return (
     <Card className="bg-card border-border p-6 text-center">
       <div className="space-y-4">
-        <div className="w-16 h-16 bg-primary/20 rounded-full flex items-center justify-center mx-auto">
-          <Wallet className="w-8 h-8 text-primary" />
+        <div className="w-16 h-16 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-full flex items-center justify-center mx-auto">
+          <Wallet className="w-8 h-8 text-purple-400" />
         </div>
         <div>
           <h3 className="font-semibold text-foreground mb-2">Connect Your Wallet</h3>
@@ -88,7 +88,7 @@ export function WalletConnect() {
                     return (
                       <Button 
                         onClick={openConnectModal}
-                        className="w-full bg-primary hover:bg-primary/90 shadow-crypto-glow"
+                        className="w-full bg-gradient-to-r from-purple-500 to-blue-500 hover:from-purple-600 hover:to-blue-600 shadow-lg shadow-purple-500/25"
                       >
                         <Link className="w-4 h-4 mr-2" />
                         Connect Wallet
